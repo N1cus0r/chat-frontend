@@ -5,7 +5,6 @@ import useAuth from "../../hooks/useAuth";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [errorMessage, setErrorMessage] = useState("");

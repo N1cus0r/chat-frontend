@@ -27,7 +27,7 @@ const RoomPage = () => {
 
   useEffect(() => {
     webSocket.current = new WebSocket(
-      `ws://127.0.0.1:8000/ws/chat/${roomCode}/`
+      `wss://chat-backend-gj81.onrender.com/ws/chat/${roomCode}/`
     );
     webSocket.current.onopen = (event) => {
       console.log("Connection open");
