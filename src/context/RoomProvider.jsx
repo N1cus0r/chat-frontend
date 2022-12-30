@@ -1,5 +1,6 @@
 import React, { createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import useAxiosApi from "../hooks/useAxiosApi";
 import useAxiosAuth from "../hooks/useAxiosAuth";
 import LocalStorageApi from "../utils/LocalStorageApi";
 
@@ -8,6 +9,7 @@ export const RoomContext = createContext();
 const RoomProvider = ({ children }) => {
   const navigate = useNavigate();
   const axiosAuth = useAxiosAuth();
+  const axiosApi = useAxiosApi();
 
   const setRoomDetails = async (roomCode) => {
     const response = await axiosAuth.get("/get-room-details/", {
@@ -63,9 +65,18 @@ const RoomProvider = ({ children }) => {
     return response.data;
   };
 
+  const checkIfRoomActive = async (roomCode) => {
+    try {
+      await axiosApi.get("/is-room-active/", { params: { code: roomCode } });
+    } catch (e) {
+      kickUser();
+    }
+  };
+
   const context = {
     setRoomDetails,
     getRoomMessages,
+    checkIfRoomActive,
     joinRoom,
     leaveRoom,
     kickUser,
