@@ -1,6 +1,7 @@
 import { Box, Button, Paper, Stack } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import FormButton from "../components/UI/buttons/FormButton";
 import useAuth from "../hooks/useAuth";
 
 const HomePage = () => {
@@ -13,33 +14,34 @@ const HomePage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "whitesmoke",
         height: "100vh",
       }}
     >
       <Paper
         sx={{
-          width: 250,
-          height: 250,
+          width: {
+            xs: 300,
+            sm: 380,
+            md: 420,
+          },
+          height: {
+            xs: 220,
+            sm: 280,
+            md: 320,
+          },
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         <Stack direction="column" spacing={3}>
-          <Button
-            variant="contained"
-            color="secondary"
-            onClick={() => navigate("join-room")}
-          >
+          <FormButton onClick={() => navigate("join-room")}>
             Join Existing Room
-          </Button>
-          <Button variant="contained" onClick={() => navigate("create-room")}>
+          </FormButton>
+          <FormButton onClick={() => navigate("create-room")}>
             Create Room
-          </Button>
-          <Button variant="contained" onClick={() => logoutUser()}>
-            Logout
-          </Button>
+          </FormButton>
+          <FormButton onClick={() => logoutUser()}>Logout</FormButton>
         </Stack>
       </Paper>
     </Box>

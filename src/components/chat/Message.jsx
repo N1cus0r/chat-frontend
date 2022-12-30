@@ -10,10 +10,7 @@ const Message = ({ children, right, username }) => {
         justifyContent: right ? "right" : "left",
       }}
     >
-      <Paper
-        sx={{ maxWidth: 200, width: "min-content", padding: 0.5 }}
-        elevation={4}
-      >
+      <Paper sx={{ maxWidth: 200, padding: 0.5 }} elevation={4}>
         <Typography variant="body2">{children}</Typography>
       </Paper>
     </Box>

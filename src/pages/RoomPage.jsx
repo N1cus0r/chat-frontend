@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import Chat from "../components/chat/Chat";
+import RoomData from "../components/RoomData";
 import useRoom from "../hooks/useRoom";
 import LocalStorageApi from "../utils/LocalStorageApi";
 
@@ -77,12 +78,7 @@ const RoomPage = () => {
 
   return (
     <Box>
-      <Box sx={{ textAlign: "center" }}>
-        <Typography variant="h6">
-          Participants: {roomData.participants}
-        </Typography>
-        <Typography variant="h4">Code: {roomCode}</Typography>
-      </Box>
+      <RoomData roomData={roomData} roomCode={roomCode} />
       <Chat
         messages={messages}
         sendMessage={sendMessage}

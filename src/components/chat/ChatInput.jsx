@@ -8,14 +8,16 @@ const ChatInput = ({ sendMessage }) => {
   const room = LocalStorageApi.getLocalStorageRoom();
   const [message, setMessage] = useState("");
   const handleClick = () => {
-    const messageData = {
-      username: user.username,
-      user: user.id,
-      roomId: room.id,
-      text: message,
-    };
-    sendMessage(messageData);
-    setMessage("");
+    if (message.length) {
+      const messageData = {
+        username: user.username,
+        user: user.id,
+        roomId: room.id,
+        text: message,
+      };
+      sendMessage(messageData);
+      setMessage("");
+    }
   };
 
   return (

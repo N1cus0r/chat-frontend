@@ -15,13 +15,19 @@ const Chat = ({ messages, sendMessage, sendEvent }) => {
       <Stack direction="column" spacing={1}>
         <Paper
           sx={{
-            width: 370,
-            height: 500,
+            width: {
+              xs: 370,
+            },
+            height: {
+              xs: 500,
+              sm: 550,
+              md: 600,
+            },
             display: "flex",
             justifyContent: "center",
           }}
         >
-          <Box p={1} sx={{ width: 320 }}>
+          <Box sx={{ width: 320, marginTop: 2 }}>
             <Stack direction="column" spacing={1}>
               <ChatLog messages={messages} />
               <ChatInput sendMessage={sendMessage} />

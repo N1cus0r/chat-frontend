@@ -1,7 +1,9 @@
 import { Box, Button, Paper, TextField, Alert, Link } from "@mui/material";
 import { Stack } from "@mui/system";
 import React, { useState } from "react";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
+import FormButton from "../buttons/FormButton";
+import MyInput from "../MyInput";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -41,7 +43,6 @@ const LoginForm = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "whitesmoke",
         height: "100vh",
       }}
     >
@@ -54,8 +55,16 @@ const LoginForm = () => {
 
         <Paper
           sx={{
-            width: 300,
-            height: 270,
+            width: {
+              xs: 300,
+              sm: 380,
+              md: 420,
+            },
+            height: {
+              xs: 280,
+              sm: 320,
+              md: 370,
+            },
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -69,23 +78,21 @@ const LoginForm = () => {
             }}
           >
             <Stack direction="column" spacing={3}>
-              <TextField
+              <MyInput
                 type="text"
                 label="Username"
                 value={username}
                 onChange={handleUsernameChange}
                 error={!!errorMessage}
               />
-              <TextField
+              <MyInput
                 type="password"
                 label="Password"
                 value={password}
                 onChange={handlePasswordChange}
                 error={!!errorMessage}
               />
-              <Button variant="contained" onClick={handleClick}>
-                Login
-              </Button>
+              <FormButton onClick={handleClick}>Login</FormButton>
               <Link href="/register">Register</Link>
             </Stack>
           </Box>

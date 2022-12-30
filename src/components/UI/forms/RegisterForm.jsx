@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Box, Button, Paper, TextField, Alert } from "@mui/material";
 import { Stack } from "@mui/system";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
+import FormButton from "../buttons/FormButton";
+import MyInput from "../MyInput";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
@@ -52,7 +54,6 @@ const RegisterForm = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "whitesmoke",
         height: "100vh",
       }}
     >
@@ -64,8 +65,16 @@ const RegisterForm = () => {
         {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
         <Paper
           sx={{
-            width: 300,
-            height: 350,
+            width: {
+              xs: 300,
+              sm: 380,
+              md: 420,
+            },
+            height: {
+              xs: 320,
+              sm: 380,
+              md: 440,
+            },
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -73,27 +82,27 @@ const RegisterForm = () => {
         >
           <Box sx={{ width: 250, maxHeight: 450 }}>
             <Stack direction="column" spacing={3}>
-              <TextField
+              <MyInput
                 type="text"
                 label="Username"
                 value={username}
                 onChange={handleUsernameChange}
               />
-              <TextField
+              <MyInput
                 type="password"
                 label="Password"
                 value={password}
                 onChange={handlePasswordChange}
               />
-              <TextField
+              <MyInput
                 type="password"
                 label="Repeat Password"
                 value={passwordRepeat}
                 onChange={handlePasswordRepeatChange}
               />
-              <Button variant="contained" type="submit" onClick={handleClick}>
+              <FormButton type="submit" onClick={handleClick}>
                 Register
-              </Button>
+              </FormButton>
             </Stack>
           </Box>
         </Paper>

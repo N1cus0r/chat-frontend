@@ -11,7 +11,11 @@ const ChatLog = ({ messages }) => {
       p={1}
       sx={{
         width: 320,
-        height: 420,
+        height: {
+          xs: 420,
+          sm: 470,
+          md: 520,
+        },
         overflowY: "scroll",
       }}
     >

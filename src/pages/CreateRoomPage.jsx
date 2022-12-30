@@ -1,6 +1,8 @@
 import { Box, Button, Paper, Stack, TextField, Alert } from "@mui/material";
 import jwtDecode from "jwt-decode";
 import React, { useState } from "react";
+import FormButton from "../components/UI/buttons/FormButton";
+import MyInput from "../components/UI/MyInput";
 import useAxiosAuth from "../hooks/useAxiosAuth";
 import useRoom from "../hooks/useRoom";
 import LocalStorageApi from "../utils/LocalStorageApi";
@@ -48,7 +50,6 @@ const CreateRoomPage = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "whitesmoke",
         height: "100vh",
       }}
     >
@@ -60,24 +61,38 @@ const CreateRoomPage = () => {
         {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
         <Paper
           sx={{
-            width: 300,
-            height: 240,
+            width: {
+              xs: 300,
+              sm: 350,
+              md: 400,
+            },
+            height: {
+              xs: 220,
+              sm: 250,
+              md: 270,
+            },
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
           }}
         >
-          <Box sx={{ width: 250, maxHeight: 270 }}>
+          <Box
+            sx={{
+              width: 250,
+              maxHeight: 270,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
             <Stack direction="column" spacing={3}>
-              <TextField
+              <MyInput
                 label="Number of participants"
                 helperText="The range is form 2 to 5"
                 value={numberOfParticipants}
                 onChange={handleNumberOfParticipantsChange}
               />
-              <Button variant="contained" onClick={handleClick}>
-                Create
-              </Button>
+              <FormButton onClick={handleClick}>Create</FormButton>
             </Stack>
           </Box>
         </Paper>
